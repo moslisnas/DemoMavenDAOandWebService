@@ -69,7 +69,7 @@
 					<webModule>
 						<groupId>com.DemoMaven.multimodule</groupId><!--<groupId>com.tsystems.tu.cdi</groupId>-->
 						<artifactId>Demo-war</artifactId>
-						<contextRoot>/demo</contextRoot>
+						<contextRoot>/demoUser</contextRoot>
 					</webModule>
 				</modules>
 			</configuration>

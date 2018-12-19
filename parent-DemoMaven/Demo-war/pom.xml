@@ -25,7 +25,11 @@
   </developers>
   
   <properties>
+	<!-- Project encoding -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
+	<!-- Project dependencies versions. -->
+	<version.bootsfaces>1.4.0</version.bootsfaces>
   </properties>
   
   <dependencies>
@@ -36,7 +40,14 @@
 		<version>${project.version}</version>
 		<type>ejb</type>
 	</dependency>
-
+	
+	<!-- BootsFaces -->
+	<dependency>
+		<groupId>net.bootsfaces</groupId>
+		<artifactId>bootsfaces</artifactId>
+		<version>${version.bootsfaces}</version>
+		<scope>compile</scope>
+	</dependency>
 	<!-- REST -->
 	<dependency>
 		<groupId>org.jboss.resteasy </groupId>
@@ -96,6 +107,12 @@
   
   <build>
 	<plugins>
+		<!-- Maven WAR bootsfaces -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>jsf-bootsfaces-plugin</artifactId>
+			<version>${version.plugin.war}</version>
+		</plugin>
 		<!-- Maven WAR plugin -->
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
