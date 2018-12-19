@@ -2,29 +2,165 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+  <name>Módulo JAR</name>
+  <description>Demo de artefacto JAR.</description>
+  <url>http://maven.apache.org</url>
+  
+  <artifactId>Demo-jar</artifactId>
+  <packaging>jar</packaging>
+  
   <parent>
     <groupId>com.DemoMaven.multimodule</groupId>
     <artifactId>parent-DemoMaven</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   
-  <groupId>com.DemoMaven.multimodule</groupId>
-  <artifactId>Demo-jar</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Demo-jar</name>
-  <url>http://maven.apache.org</url>
-  <packaging>jar</packaging>
+  <developers>
+	<developer>
+		<email>alejandro.molina@t-systems.com</email>
+		<name>Alejandro Molina</name>
+		<url>https://github.com/moslisnas</url>
+		<id>moslisnas</id>
+	</developer>
+  </developers>
   
   <properties>
+	<!-- Project encoding -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<!-- Java source and target versions. -->
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	
+    <!-- Project dependencies versions. -->
+	<version.cdi>2.0</version.cdi>
+	<version.log4j>2.11.1</version.log4j>
+	<version.commons.lang>3.0</version.commons.lang>
+	<version.hibernate>5.2.4.Final</version.hibernate>
+	<version.bean.validation>2.0.1.Final</version.bean.validation>
+	<version.h2>1.4.197</version.h2>
+	<!-- Test dependencies versions. -->
+	<version.junit>4.12</version.junit>
+
+	<!-- Maven plugins versions. -->
+	<version.plugin.javadoc>3.0.1</version.plugin.javadoc>
+	<version.plugin.deploy>3.0.0-M1</version.plugin.deploy>
+	<version.plugin.release>2.5.3</version.plugin.release>
+	<version.source.plugin>3.0.1</version.source.plugin>
   </properties>
   
   <dependencies>
+  	<!-- Hibernate -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>${version.hibernate}</version>
     </dependency>
+	<!-- Bean Validation -->
+	<dependency>
+		<groupId>javax.validation</groupId>
+		<artifactId>validation-api</artifactId>
+		<version>${version.bean.validation}</version>
+	</dependency>
+	<!-- H2 -->
+	<dependency>
+		<groupId>com.h2database</groupId>
+		<artifactId>h2</artifactId>
+		<version>${version.h2}</version>
+		<scope>runtime</scope>
+	</dependency>
+	<!-- EJB -->
+	<dependency>
+           <groupId>org.jboss.spec.javax.ejb</groupId>
+           <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+           <scope>provided</scope>
+           <version>1.0.1.Final</version>
+       </dependency>
+	<!-- Log4j -->
+	<dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-core</artifactId>
+		<version>${version.log4j}</version>
+	</dependency>
+	<!-- Commons Lang -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>${version.commons.lang}</version>
+	</dependency>
+
+	<!--Testing dependencies -->
+	<!-- JUnit. -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${version.junit}</version>
+		<scope>test</scope>
+	</dependency>
   </dependencies>
+  
+  <build>
+		<plugins>
+			<!-- Maven EJB plugin -->
+			<plugin>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>${version.ejb.plugin}</version>
+                <configuration>
+                    <ejbVersion>3.1</ejbVersion>
+                </configuration>
+            </plugin>
+			<!-- Maven Javadoc plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${version.plugin.javadoc}</version>
+				<configuration>
+					<show>public</show>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Maven Deploy plugin -->
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${version.plugin.deploy}</version>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Maven Source plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${version.source.plugin}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

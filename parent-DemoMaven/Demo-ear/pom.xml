@@ -2,29 +2,78 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+  <name>Módulo EAR</name>
+  <description>Demo de artefacto EAR.</description>
+  <url>http://maven.apache.org</url>
+  
+  <artifactId>Demo-ear</artifactId>
+  <packaging>ear</packaging>
+  
   <parent>
     <groupId>com.DemoMaven.multimodule</groupId>
     <artifactId>parent-DemoMaven</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   
-  <groupId>com.DemoMaven.multimodule</groupId>
-  <artifactId>Demo-ear</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Demo-ear</name>
-  <url>http://maven.apache.org</url>
-  <packaging>ear</packaging>
+  <developers>
+	<developer>
+		<email>alejandro.molina@t-systems.com</email>
+		<name>Alejandro Molina</name>
+		<url>https://github.com/moslisnas</url>
+		<id>moslisnas</id>
+	</developer>
+  </developers>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+	<!-- Módulos a empaquetar en el EAR. -->
+	<dependency>
+		<groupId>com.DemoMaven.multimodule</groupId><!--<groupId>com.tsystems.tu.cdi</groupId>-->
+		<artifactId>Demo-jar</artifactId>
+		<version>${project.version}</version>
+		<type>ejb</type>
+	</dependency>
+	<dependency>
+		<groupId>com.DemoMaven.multimodule</groupId><!--<groupId>com.tsystems.tu.cdi</groupId>-->
+		<artifactId>Demo-war</artifactId>
+		<version>${project.version}</version>
+		<type>war</type>
+	</dependency>
+	
+	<!--Testing dependencies -->
+	<!-- JUnit. -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${version.junit}</version>
+		<scope>test</scope>
+	</dependency>
   </dependencies>
+  
+  <build>
+	<plugins>
+		<!-- Maven EAR plugin -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-ear-plugin</artifactId>
+			<version>${version.plugin.ear}</version>
+			<configuration>
+                   <version>7</version>
+                   <defaultLibBundleDir>lib</defaultLibBundleDir>
+                   <fileNameMapping>no-version</fileNameMapping>
+				<!-- Módulo web (War) -->
+				<modules>
+					<webModule>
+						<groupId>com.DemoMaven.multimodule</groupId><!--<groupId>com.tsystems.tu.cdi</groupId>-->
+						<artifactId>Demo-war</artifactId>
+						<contextRoot>/demo</contextRoot>
+					</webModule>
+				</modules>
+			</configuration>
+		</plugin>
+	</plugins>
+	</build>
 </project>

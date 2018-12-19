@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <name>parent-DemoMaven</name>
+  <description>Demo Maven con web service y modelo DAO.</description>
+  <url>https://github.com/moslisnas/DemoMavenDAOandWebService</url>
+  <version>1.0-SNAPSHOT</version>
+  
   <groupId>com.DemoMaven.multimodule</groupId>
   <artifactId>parent-DemoMaven</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>parent-DemoMaven</name>
-  <url>http://maven.apache.org</url>
   <packaging>pom</packaging>
   
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+  <developers>
+	<developer>
+		<email>alejandro.molina@t-systems.com</email>
+		<name>Alejandro Molina</name>
+		<url>https://github.com/moslisnas</url>
+		<id>moslisnas</id>
+	</developer>
+  </developers>
   
   <dependencies>
     <dependency>
@@ -20,6 +27,33 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <properties>
+	<!-- Project encoding -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<!-- Java source and target versions. -->
+	<maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+	
+    <!-- Project dependencies versions. -->
+	<version.cdi>2.0</version.cdi>
+	<version.jsf>2.3.5.SP1</version.jsf>
+	<version.jstl>1.1.4.Final</version.jstl>
+	<version.servlet.api>1.0.0.Final</version.servlet.api>
+	<version.commons.lang>3.0</version.commons.lang>
+	<version.log4j>1.2.17</version.log4j>
+	<!-- Test dependencies versions. -->
+	<version.junit>4.12</version.junit>
+	
+	<!-- Maven plugins versions. -->
+	<version.plugin.ear>2.10</version.plugin.ear>
+	<version.plugin.war>3.2.2</version.plugin.war>
+	<version.plugin.javadoc>3.0.1</version.plugin.javadoc>
+	<version.plugin.deploy>3.0.0-M1</version.plugin.deploy>
+	<version.plugin.release>2.5.3</version.plugin.release>
+	<version.source.plugin>3.0.1</version.source.plugin>
+	<version.ejb.plugin>2.3</version.ejb.plugin>
+  </properties>
   
   <modules>
     <module>Demo-jar</module>
