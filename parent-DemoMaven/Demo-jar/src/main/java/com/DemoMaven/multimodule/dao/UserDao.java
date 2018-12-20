@@ -20,9 +20,9 @@ import com.DemoMaven.multimodule.exceptions.DaoException;
  */
 @Stateless
 public class UserDao implements IDao<User> {
-	
+	//Log
 	private static final Logger LOG = LogManager.getLogger();
-
+	//Queries
 	private static final String QUERY_GET_ALL = "SELECT t FROM Tarea t";
 
 	EntityManager em = null;
@@ -34,6 +34,14 @@ public class UserDao implements IDao<User> {
 		this.em = Persistence.createEntityManagerFactory("dao").createEntityManager();
 	}
 
+	/*
+	 * Get user by id.
+	 * 
+	 * @param id the user id
+	 * @return the user with the selected id
+	 * @exception DaoException
+	 * @see com.DemoMaven.multimodule.dao.IDao#getById(long)
+	 */
 	@Override
 	public User getById(long id) throws DaoException {
 		LOG.info("UserDAO.getById. Id: {}.", id);
@@ -43,7 +51,13 @@ public class UserDao implements IDao<User> {
 			throw new DaoException(exception);
 		}
 	}
-
+	/*
+	 * Get all users.
+	 * 
+	 * @return the completed user list
+	 * @exception DaoException
+	 * @see com.DemoMaven.multimodule.dao.IDao#getAll()
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getAll() throws DaoException {
@@ -54,7 +68,13 @@ public class UserDao implements IDao<User> {
 			throw new DaoException(exception);
 		}
 	}
-
+	/*
+	 * Add a new user.
+	 * 
+	 * @param instance the user instance
+	 * @exception DaoException
+	 * @see com.DemoMaven.multimodule.dao.IDao#add(java.lang.Object)
+	 */
 	@Override
 	public void add(User instance) throws DaoException {
 		LOG.info("UserDAO.add. {}", instance);
@@ -64,7 +84,13 @@ public class UserDao implements IDao<User> {
 			throw new DaoException(exception);
 		}
 	}
-
+	/*
+	 * Update the selected user.
+	 * 
+	 * @param instance the user instance
+	 * @exception DaoException
+	 * @see com.DemoMaven.multimodule.dao.IDao#add(java.lang.Object)
+	 */
 	@Override
 	public void update(User instance) throws DaoException {
 		LOG.info("UserDAO.update. {}.", instance);
@@ -74,7 +100,13 @@ public class UserDao implements IDao<User> {
 			throw new DaoException(exception);
 		}
 	}
-
+	/*
+	 * Deleted the selected user by id.
+	 * 
+	 * @param id the user id
+	 * @exception DaoException
+	 * @see com.DemoMaven.multimodule.dao.IDao#delete(long)
+	 */
 	@Override
 	public void delete(long id) throws DaoException {
 		LOG.info("UserDAO.delete. Id: {}.", id);
@@ -85,5 +117,4 @@ public class UserDao implements IDao<User> {
 			throw new DaoException(exception);
 		}
 	}
-
 }

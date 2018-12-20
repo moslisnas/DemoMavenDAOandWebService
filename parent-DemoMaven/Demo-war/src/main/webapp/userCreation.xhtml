@@ -8,7 +8,7 @@
 	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-	<title>Welcome</title>
+	<title>User creation</title>
 </h:head>
 <h:body>
 	<h:form>
@@ -16,23 +16,21 @@
 			<b:row>
 				<b:column span="12" style="text-align:center" >
 					<h1>
-						Welcome to the blog made with maven
+						User creation
 					</h1>
 				</b:column>
 			</b:row>
 			<b:row style="text-align:center">
-				<b:column span="3">
-					<b:commandLink look="success" href="#{navigationBackingBean.goToCreateUser()}">Create user</b:commandLink>
+				<b:column offset="4" span="4" contentDisabled="false">
+      				<b:inputText placeholder="Username to access to the blog" label="Username"/>
 				</b:column>
-				<b:column span="3">
-					<b:commandLink look="success" href="#{navigationBackingBean.goToCreateBlog()}">Create blog</b:commandLink>
+				<b:column offset="4" span="4" contentDisabled="false">
+      				<b:inputText placeholder="Password to access to the blog" label="Password"/>
 				</b:column>
-				<b:column span="3">
-					<b:commandLink look="success" href="#{navigationBackingBean.goToCreatePost()}">Create post</b:commandLink>
+				<b:column offset="4" span="4" contentDisabled="false">
+      				<b:inputText label="Repeat password"/>
 				</b:column>
-				<b:column span="3">
-					<b:commandLink look="success" href="#{navigationBackingBean.goToCreateComment()}">Create comment</b:commandLink>
-				</b:column>
+				<!--<b:commandButton value="#{userBackingBean.createUser()}">Crear usuario</b:commandButton>-->
 			</b:row>
 		</b:container>
 	</h:form>

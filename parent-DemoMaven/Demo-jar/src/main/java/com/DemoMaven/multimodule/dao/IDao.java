@@ -50,5 +50,4 @@ public interface IDao<K> {
 	 * @throws DaoException Exception.
 	 */
 	void delete(long id) throws DaoException;
-
 }

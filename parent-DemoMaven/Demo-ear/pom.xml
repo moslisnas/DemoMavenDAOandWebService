@@ -61,13 +61,13 @@
 			<artifactId>maven-ear-plugin</artifactId>
 			<version>${version.plugin.ear}</version>
 			<configuration>
-                   <version>7</version>
-                   <defaultLibBundleDir>lib</defaultLibBundleDir>
-                   <fileNameMapping>no-version</fileNameMapping>
+                <version>7</version>
+                <defaultLibBundleDir>lib</defaultLibBundleDir>
+                <fileNameMapping>no-version</fileNameMapping>
 				<!-- Módulo web (War) -->
 				<modules>
 					<webModule>
-						<groupId>com.DemoMaven.multimodule</groupId><!--<groupId>com.tsystems.tu.cdi</groupId>-->
+						<groupId>com.DemoMaven.multimodule</groupId>
 						<artifactId>Demo-war</artifactId>
 						<contextRoot>/demoUser</contextRoot>
 					</webModule>

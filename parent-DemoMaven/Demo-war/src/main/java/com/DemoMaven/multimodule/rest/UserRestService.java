@@ -19,10 +19,10 @@ import javax.ws.rs.Produces;
 
 @Path("/user")
 public class UserRestService {
-	//Invocar el EJB
 	@EJB
 	private UserBO user;
 	
+	//Log
 	private static final Logger LOG = LogManager.getLogger();
 		
 	@GET
@@ -31,7 +31,6 @@ public class UserRestService {
 		
 		return null;
 	}
-
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/{id}")

@@ -4,21 +4,54 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 /**
- * Clase UserBackingBean demo.
+ * UserBackingBean demo class.
+ * 
  * @author moslisnas
  *
  */
-
 @RequestScoped
 @ManagedBean
 public class UserBackingBean {
-	private String name = "UsuarioTest";
+	private String username = "UsuarioTest";
+	private String email = "UsuarioTest@t-systems.com";
 
-	public String getName() {
-		return name;
+	/*
+	 *  Username getter.
+	 *  
+	 * @return the username String
+	 */
+	public String getUsername() {
+		return username;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	/* 
+	 * Username setter.
+	 * 
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	/**
+	 *  Email getter.
+	 *  
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 *  Email getter.
+	 *  
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	/**
+	 *  Create a new user.
+	 *  
+	 */
+	public void createUser() {
 	}
 }
