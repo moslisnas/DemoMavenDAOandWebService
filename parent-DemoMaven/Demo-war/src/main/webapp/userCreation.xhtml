@@ -21,19 +21,29 @@
 				</b:column>
 			</b:row>
 			<b:row style="text-align:center">
-				<b:column offset="4" span="4" contentDisabled="false">
-      				<b:inputText placeholder="Username to access to the blog" label="Username"/>
+				<b:column offset="4" span="4">
+      				<b:inputText value="#{userBackingBean.username}" placeholder="Username to access to the blog" label="Username"/>
+					<b:message for="@previous"/>
 				</b:column>
-				<b:column offset="4" span="4" contentDisabled="false">
-      				<b:inputText placeholder="Password to access to the blog" label="Password"/>
+				<b:column offset="4" span="4">
+      				<b:inputText value="#{userBackingBean.password}" label="Password"/>
+					<b:message for="@previous"/>
 				</b:column>
-				<b:column offset="4" span="4" contentDisabled="false">
-      				<b:inputText label="Repeat password"/>
+				<b:column offset="4" span="4">
+      				<b:inputText value="#{userBackingBean.confirmPassword}" label="Repeat password"/>
+					<b:message for="@previous"/>
 				</b:column>
-				<!--<b:commandButton value="#{userBackingBean.createUser()}">Crear usuario</b:commandButton>-->
+				<b:column offset="4" span="4">
+      				<b:inputText value="#{userBackingBean.email}" placeholder="Email account" label="Email"/>
+					<b:message for="@previous"/>
+				</b:column>
+				<b:column><p></p></b:column>
+				<b:column offset="4" span="4">
+					<b:commandButton look="success">Crear usuario</b:commandButton>
+				</b:column>
 			</b:row>
 		</b:container>
 	</h:form>
-	
 </h:body>
+
 </html>
