@@ -12,6 +12,7 @@
 </h:head>
 <h:body>
 	<h:form>
+		<f:event listener="#{blogBackingBean.createBlog}" type="postValidate" />
 		<b:container fluid="true">
 			<b:row>
 				<b:column span="12" style="text-align:center" >
@@ -22,11 +23,14 @@
 			</b:row>
 			<b:row style="text-align:center">
 				<b:column offset="4" span="4" contentDisabled="false">
-      				<b:inputText placeholder="Name of the new blog" label="Name"/>
+      				<b:inputText id="name" value="#{blogBackingBean.name}" placeholder="Name of the new blog" label="Name"/>
+      				<b:message for="name"/>
 				</b:column>
 				<b:column offset="4" span="4" contentDisabled="false">
-      				<b:inputText placeholder="The type of content of this blog" label="Category"/>
+      				<b:inputText id="category" value="#{blogBackingBean.category}" placeholder="The type of content of this blog" label="Category"/>
+					<b:message for="category"/>
 				</b:column>
+				<b:column><p></p></b:column>
 				<b:column offset="4" span="4">
 					<b:commandButton look="success">Crear blog</b:commandButton>
 				</b:column>

@@ -25,19 +25,20 @@
   </developers>
   
   <properties>
+	<!-- Project encoding -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
   <dependencies>
 	<!-- Módulos a empaquetar en el EAR. -->
 	<dependency>
-		<groupId>com.DemoMaven.multimodule</groupId><!--<groupId>com.tsystems.tu.cdi</groupId>-->
+		<groupId>com.DemoMaven.multimodule</groupId>
 		<artifactId>Demo-jar</artifactId>
 		<version>${project.version}</version>
 		<type>ejb</type>
 	</dependency>
 	<dependency>
-		<groupId>com.DemoMaven.multimodule</groupId><!--<groupId>com.tsystems.tu.cdi</groupId>-->
+		<groupId>com.DemoMaven.multimodule</groupId>
 		<artifactId>Demo-war</artifactId>
 		<version>${project.version}</version>
 		<type>war</type>

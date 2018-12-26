@@ -2,17 +2,14 @@ package com.DemoMaven.multimodule;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.validation.constraints.AssertTrue;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.DemoMaven.multimodule.annotation.FieldMatch;
-
-@FieldMatch.List({
-    @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match")
-})
 /**
  * UserBackingBean demo class.
  * 
@@ -22,7 +19,6 @@ import com.DemoMaven.multimodule.annotation.FieldMatch;
 @RequestScoped
 @ManagedBean
 public class UserBackingBean {
-	
 	@NotNull
 	@NotEmpty(message="This fill can't be empty")
 	@Size(min=4, max=20, message="You need to indicate an username between 3 and 20 characters")
@@ -35,17 +31,25 @@ public class UserBackingBean {
 	
 	@NotNull
 	@NotEmpty(message="This fill can't be empty")
-	@Size(min=5, max=50, message="You need to indicate a valid password: 8 characters at least")
+	@Size(min=8, max=50, message="You need to indicate a valid password: 8 characters at least")
 	private String confirmPassword;
-	@AssertTrue(message="The password repeat doesn't match")
-	private boolean repeatedPassword = false;
-
+	
 	@NotNull
 	@NotEmpty(message="This fill can't be empty")
 	@Size(min=5, max=100, message="You need to indicate an email")
 	@Email(message ="Email format incorrect")
 	private String email;
 
+
+	/**
+	 *  Create a new user.
+	 *  
+	 */
+	public void createUser(ComponentSystemEvent event) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		UIComponent components = event.getComponent();
+	}
+	
 	/*
 	 *  Username getter.
 	 *  
@@ -95,22 +99,6 @@ public class UserBackingBean {
 		this.confirmPassword = confirmPassword;
 	}
 	/**
-	 * RepeatedPassword getter.
-	 * 
-	 * @return the repeatedPassword
-	 */
-	public boolean isRepeatedPassword() {
-		return repeatedPassword;
-	}
-	/**
-	 * RepeatedPassword setter.
-	 * 
-	 * @param repeatedPassword the repeatedPassword to set
-	 */
-	public void setRepeatedPassword(boolean repeatedPassword) {
-		this.repeatedPassword = repeatedPassword;
-	}
-	/**
 	 *  Email getter.
 	 *  
 	 * @return the email
@@ -125,15 +113,5 @@ public class UserBackingBean {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
-	
-	/**
-	 *  Create a new user.
-	 *  
-	 */
-	public void createUser() {
-		/*if(password.equals(passwordRepeat))
-			repeatedPassword = true;*/
 	}
 }

@@ -12,6 +12,7 @@
 </h:head>
 <h:body>
 	<h:form>
+		<f:event listener="#{userBackingBean.createUser}" type="postValidate" />
 		<b:container fluid="true">
 			<b:row>
 				<b:column span="12" style="text-align:center" >
@@ -22,20 +23,24 @@
 			</b:row>
 			<b:row style="text-align:center">
 				<b:column offset="4" span="4">
-      				<b:inputText value="#{userBackingBean.username}" placeholder="Username to access to the blog" label="Username"/>
-					<b:message for="@previous"/>
+      				<b:inputText id="username" value="#{userBackingBean.username}" placeholder="Username to access to the blog" label="Username"/>
+					<b:message for="username"/>
 				</b:column>
 				<b:column offset="4" span="4">
-      				<b:inputText value="#{userBackingBean.password}" label="Password"/>
-					<b:message for="@previous"/>
+      				<b:inputSecret id="password" value="#{userBackingBean.password}" label="Password"/>
+					<b:message for="password"/>
 				</b:column>
 				<b:column offset="4" span="4">
-      				<b:inputText value="#{userBackingBean.confirmPassword}" label="Repeat password"/>
-					<b:message for="@previous"/>
+      				<b:inputSecret id="confirmPassword" value="#{userBackingBean.confirmPassword}" label="Repeat password"/>
+					<b:message for="confirmPassword"/>
+					<div id="confirmPasswordMessage" class="alert alert-danger bf-message" style="display:none; visibility: hidden;">
+						<span class="bficon bficon-error-circle-o bf-message-icon"></span>
+						<span class="bf-message-detail">Password must match</span>
+					</div>
 				</b:column>
 				<b:column offset="4" span="4">
-      				<b:inputText value="#{userBackingBean.email}" placeholder="Email account" label="Email"/>
-					<b:message for="@previous"/>
+      				<b:inputText id="email" value="#{userBackingBean.email}" placeholder="Email account" label="Email"/>
+					<b:message for="email"/>
 				</b:column>
 				<b:column><p></p></b:column>
 				<b:column offset="4" span="4">

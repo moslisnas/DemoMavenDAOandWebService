@@ -12,6 +12,7 @@
 </h:head>
 <h:body>
 	<h:form>
+		<f:event listener="#{postBackingBean.createPost}" type="postValidate"/>
 		<b:container fluid="true">
 			<b:row>
 				<b:column span="12" style="text-align:center" >
@@ -22,14 +23,22 @@
 			</b:row>
 			<b:row style="text-align:center">
 				<b:column offset="4" span="4">
-      				<b:inputText placeholder="Title of the post" label="Title"/>
+      				<b:inputText id="author" value="#{postBackingBean.author}" placeholder="The post author" label="Author"/>
+      				<b:message for="author"/>
 				</b:column>
 				<b:column offset="4" span="4">
-      				<b:inputText placeholder="Resume of the post" label="Resume"/>
+      				<b:inputText id="title" value="#{postBackingBean.title}" placeholder="Title of the post" label="Title"/>
+      				<b:message for="title"/>
 				</b:column>
 				<b:column offset="4" span="4">
-      				<b:inputText placeholder="Content of the post" label="Content"/>
+      				<b:inputTextarea id="resume" value="#{postBackingBean.resume}" placeholder="Resume of the post" label="Resume"/>
+      				<b:message for="resume"/>
 				</b:column>
+				<b:column offset="4" span="4">
+      				<b:inputTextarea id="content" value="#{postBackingBean.content}" placeholder="Content of the post" label="Content"/>
+      				<b:message for="content"/>
+				</b:column>
+				<b:column><p></p></b:column>
 				<b:column offset="4" span="4">
 					<b:commandButton look="success">Crear post</b:commandButton>
 				</b:column>
