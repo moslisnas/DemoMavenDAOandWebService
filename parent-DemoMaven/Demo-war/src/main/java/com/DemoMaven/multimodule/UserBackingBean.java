@@ -5,10 +5,14 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
+import javax.inject.Inject;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.DemoMaven.multimodule.business.logic.UserBO;
+import com.DemoMaven.multimodule.business.objects.User;
 
 /**
  * UserBackingBean demo class.
@@ -19,6 +23,10 @@ import javax.validation.constraints.Size;
 @RequestScoped
 @ManagedBean
 public class UserBackingBean {
+	User user;
+	@Inject
+	private UserBO userBO;
+	
 	@NotNull
 	@NotEmpty(message="This fill can't be empty")
 	@Size(min=4, max=20, message="You need to indicate an username between 3 and 20 characters")
@@ -45,7 +53,7 @@ public class UserBackingBean {
 	 *  Create a new user.
 	 *  
 	 */
-	public void createUser(ComponentSystemEvent event) {
+	public void create(ComponentSystemEvent event) {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		UIComponent components = event.getComponent();
 	}

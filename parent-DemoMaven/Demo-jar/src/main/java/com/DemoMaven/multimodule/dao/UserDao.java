@@ -20,10 +20,11 @@ import com.DemoMaven.multimodule.exceptions.DaoException;
  */
 @Stateless
 public class UserDao implements IDao<User> {
+	User user;
 	//Log
 	private static final Logger LOG = LogManager.getLogger();
 	//Queries
-	private static final String QUERY_GET_ALL = "SELECT t FROM Tarea t";
+	private static final String QUERY_GET_ALL = "SELECT t FROM User t";
 
 	EntityManager em = null;
 	
@@ -31,7 +32,7 @@ public class UserDao implements IDao<User> {
 	 * DAO constructor.
 	 */
 	public UserDao() {
-		this.em = Persistence.createEntityManagerFactory("dao").createEntityManager();
+		this.em = Persistence.createEntityManagerFactory("userDao").createEntityManager();
 	}
 
 	/*

@@ -27,6 +27,9 @@ public class User {
 	@NotNull
 	String email;
 	
+	/**
+	 * Constructor of User.
+	 */
 	public User() {
 		
 	}

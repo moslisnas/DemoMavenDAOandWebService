@@ -20,22 +20,37 @@ import javax.validation.constraints.Size;
 public class BlogBackingBean {
 	@NotNull
 	@NotEmpty(message="This fill can't be empty")
+	@Size(min=4, max=200, message="You need to indicate the author of the blog")
+	private String author;
+	@NotNull
+	@NotEmpty(message="This fill can't be empty")
 	@Size(min=4, max=200, message="You need to indicate a name for the blog")
 	private String name;
-	
-	@Size(max=200, message="You can't write more than 200 characters")
-	private String category;
-
 
 	/**
 	 *  Create a new blog.
-	 *  
 	 */
 	public void createBlog(ComponentSystemEvent event) {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		UIComponent components = event.getComponent();
 	}
-	
+
+	/**
+	 *  Author getter.
+	 *  
+	 * @return the author
+	 */
+	public String getAuthor() {
+		return author;
+	}
+	/**
+	 *  Author setter.
+	 *  
+	 * @param author the author to set
+	 */
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 	/*
 	 *  Name getter.
 	 *  
@@ -51,21 +66,5 @@ public class BlogBackingBean {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-	/**
-	 *  Category getter.
-	 *  
-	 * @return the category
-	 */
-	public String getCategory() {
-		return category;
-	}
-	/**
-	 *  Category setter.
-	 *  
-	 * @param category the category to set
-	 */
-	public void setCategory(String category) {
-		this.category = category;
 	}
 }
