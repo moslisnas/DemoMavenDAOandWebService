@@ -19,12 +19,22 @@ import javax.validation.constraints.Size;
 @ManagedBean
 public class CommentBackingBean {
 	@NotNull
-	@NotEmpty(message="You need to indicate a text")
-	private String comment;
-
+	@NotEmpty(message="This fill can't be empty")
+	@Size(min=3, message="You need to indicate a title")
+	@Size(max=200, message="You can't write more than 200 characters as title")
+	private String title;
+	
+	@NotNull
+	@NotEmpty(message="This fill can't be empty")
+	private String message;
+	
+	@NotNull
+	@NotEmpty(message="This fill can't be empty")
+	@Size(min=4, max=200, message="You need to indicate the comment author")
+	private String author;
 
 	/**
-	 *  Create a new blog.
+	 *  Create a new post.
 	 *  
 	 */
 	public void createComment(ComponentSystemEvent event) {
@@ -33,19 +43,51 @@ public class CommentBackingBean {
 	}
 	
 	/*
-	 *  Comment getter.
+	 *  Title getter.
 	 *  
-	 * @return the comment String
+	 * @return the title String
 	 */
-	public String getComment() {
-		return comment;
+	public String getTitle() {
+		return title;
 	}
 	/* 
-	 * Comment setter.
+	 * Title setter.
 	 * 
-	 * @param comment the comment to set
+	 * @param title the name to set
 	 */
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 *  Message getter.
+	 *  
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+	/**
+	 *  Message setter.
+	 *  
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	/*
+	 *  Author getter.
+	 *  
+	 * @return the author String
+	 */
+	public String getAuthor() {
+		return author;
+	}
+	/* 
+	 * Author setter.
+	 * 
+	 * @param author the name to set
+	 */
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 }

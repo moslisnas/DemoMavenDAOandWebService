@@ -22,13 +22,21 @@
 				</b:column>
 			</b:row>
 			<b:row style="text-align:center">
-				<b:column offset="4" span="4" contentDisabled="false">
-      				<b:inputTextarea id="comment" value="#{commentBackingBean.comment}" placeholder="Text" label="Comment"/>
+				<b:column offset="4" span="4">
+      				<b:inputText id="title" value="#{commentBackingBean.title}" placeholder="Title of the comment" label="Comment"/>
       				<b:message for="comment"/>
+				</b:column>
+				<b:column offset="4" span="4">
+      				<b:inputTextarea id="message" value="#{commentBackingBean.message}" placeholder="Content of the post" label="Comment"/>
+      				<b:message for="message"/>
+				</b:column>
+				<b:column offset="4" span="4">
+      				<b:inputText id="author" value="#{commentBackingBean.author}" placeholder="The comment author" label="Author"/>
+      				<b:message for="author"/>
 				</b:column>
 				<b:column><p></p></b:column>
 				<b:column offset="4" span="4">
-					<b:commandButton look="success">Crear comentario</b:commandButton>
+					<b:commandButton look="success">Create comment</b:commandButton>
 				</b:column>
 			</b:row>
 		</b:container>

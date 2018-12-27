@@ -17,28 +17,24 @@ import javax.validation.constraints.Size;
  */
 @RequestScoped
 @ManagedBean
-public class PostBackingBean {
-	@NotNull
-	@NotEmpty(message="This fill can't be empty")
-	@Size(min=4, max=200, message="You need to indicate the post author")
-	private String author;
-	
+public class PostBackingBean {	
 	@NotNull
 	@NotEmpty(message="This fill can't be empty")
 	@Size(min=3, message="You need to indicate a title")
 	@Size(max=200, message="You can't write more than 200 characters as title")
 	private String title;
 	
-	@Size(min=0, max=1000, message="You can't write more than 1000 characters as resume")
-	private String resume;
+	@NotNull
+	@NotEmpty(message="This fill can't be empty")
+	private String message;
 	
 	@NotNull
 	@NotEmpty(message="This fill can't be empty")
-	private String content;
-
+	@Size(min=4, max=200, message="You need to indicate the post author")
+	private String author;
 
 	/**
-	 *  Create a new blog.
+	 *  Create a new post.
 	 *  
 	 */
 	public void createPost(ComponentSystemEvent event) {
@@ -46,22 +42,6 @@ public class PostBackingBean {
 		UIComponent components = event.getComponent();
 	}
 	
-	/*
-	 *  Author getter.
-	 *  
-	 * @return the author String
-	 */
-	public String getAuthor() {
-		return author;
-	}
-	/* 
-	 * Author setter.
-	 * 
-	 * @param author the name to set
-	 */
-	public void setAuthor(String author) {
-		this.author = author;
-	}
 	/*
 	 *  Title getter.
 	 *  
@@ -79,35 +59,35 @@ public class PostBackingBean {
 		this.title = title;
 	}
 	/**
-	 *  Resume getter.
+	 *  Message getter.
 	 *  
-	 * @return the resume
+	 * @return the message
 	 */
-	public String getResume() {
-		return resume;
+	public String getMessage() {
+		return message;
 	}
 	/**
-	 *  Resume setter.
+	 *  Message setter.
 	 *  
-	 * @param resume the resume to set
+	 * @param message the message to set
 	 */
-	public void setResume(String resume) {
-		this.resume = resume;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-	/**
-	 *  Content getter.
+	/*
+	 *  Author getter.
 	 *  
-	 * @return the content
+	 * @return the author String
 	 */
-	public String getContent() {
-		return content;
+	public String getAuthor() {
+		return author;
 	}
-	/**
-	 *  Content setter.
-	 *  
-	 * @param content the content to set
+	/* 
+	 * Author setter.
+	 * 
+	 * @param author the name to set
 	 */
-	public void setContent(String content) {
-		this.content = content;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 }

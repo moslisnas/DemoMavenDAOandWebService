@@ -50,7 +50,7 @@ public class Blog {
 	}
 	
 	/**
-	 * Getter of user id.
+	 * Getter of blog id.
 	 * 
 	 * @return the id
 	 */
@@ -58,7 +58,7 @@ public class Blog {
 		return id;
 	}
 	/**
-	 * Setter of user id.
+	 * Setter of blog id.
 	 * 
 	 * @param id the id to set
 	 */
